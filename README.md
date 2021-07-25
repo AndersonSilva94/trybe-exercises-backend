@@ -9,7 +9,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### Introdução à SQL
 ---
 
-- [ ] Introdução - Back-end/ Introdução - Bancos de dados relacionais/ Banco de dados SQL
+- [x] Introdução - Back-end/ Introdução - Bancos de dados relacionais/ Banco de dados SQL
 - [ ] Encontrando dados em um banco de dados
 - [ ] Filtrando dados de forma específica
 - [ ] Manipulando tabelas
