@@ -17,7 +17,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### Funções SQL, Joins e Subqueries
 ---
 
-- [ ] Funções mais usadas no SQL
+- [x] Funções mais usadas no SQL
 - [ ] Descomplicando JOINs, UNIONs e Subqueries
 - [ ] Stored Routines & Stored Functions
 
