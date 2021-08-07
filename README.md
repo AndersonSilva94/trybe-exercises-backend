@@ -24,7 +24,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### Normalização e Modelagem de Banco de Dados
 ---
 
-- [ ] Transformando ideias em um modelo de banco de dados - Parte 1
+- [x] Transformando ideias em um modelo de banco de dados - Parte 1
 - [ ] Normalização, Formas Normais e Dumps
 - [ ] Transformando ideias em um modelo de banco de dados - Parte 2
 
