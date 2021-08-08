@@ -25,7 +25,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ---
 
 - [x] Transformando ideias em um modelo de banco de dados - Parte 1
-- [ ] Normalização, Formas Normais e Dumps
+- [x] Normalização, Formas Normais e Dumps
 - [ ] Transformando ideias em um modelo de banco de dados - Parte 2
 
 ### Introdução ao MongoDB
