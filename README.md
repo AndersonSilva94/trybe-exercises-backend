@@ -32,7 +32,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ---
 
 - [x] Introdução - NoSQL/ MongoDB - Introdução
-- [ ] Filter Operators
+- [x] Filter Operators
 
 ### MongoDB: Updates Simples e Complexos
 ---
