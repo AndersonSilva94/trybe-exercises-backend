@@ -37,7 +37,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### MongoDB: Updates Simples e Complexos
 ---
 
-- [ ] Updates Simples
+- [x] Updates Simples
 - [ ] Updates Complexos - Arrays - Parte 1
 - [ ] Updates Complexos - Arrays - Parte 2
 
