@@ -45,34 +45,34 @@ db.movies.find({
 });
 
 // 3. Adicione um array chamado ratings ao filme Batman com os seguintes valores: [85, 100, 102, 105] . Dica: lembre-se do operador $each visto no dia anterior.
-/* db.movies.updateOne(
+db.movies.updateOne(
   { title: "Batman" },
   { $push: {
     ratings: {
       $each: [85, 100, 102, 105]
     }
   } }
-); */
+);
 
 // 4. Adicione um array chamado ratings ao filme Godzilla com os seguintes valores: [78, 52, 95, 102] .
-/* db.movies.updateOne(
+db.movies.updateOne(
   { title: "Godzilla" },
   { $push: {
     ratings: {
       $each: [78, 52, 95, 102]
     }
   } }
-);*/
+);
 
 // 5. Adicione um array chamado ratings ao filme Home Alone com os seguintes valores: [200, 99, 65] .
-/* db.movies.updateOne(
+db.movies.updateOne(
   { title: "Home Alone" },
   { $push: {
     ratings: {
       $each: [200, 99, 65]
     }
   } }
-);*/
+);
 
 // 6. Retorne todos os filmes com ratings maior do que 103 , exibindo apenas os campos title e ratings .
 db.movies.find(
