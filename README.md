@@ -39,7 +39,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 
 - [x] Updates Simples
 - [x] Updates Complexos - Arrays - Parte 1
-- [ ] Updates Complexos - Arrays - Parte 2
+- [x] Updates Complexos - Arrays - Parte 2
 
 ### MongoDB: Aggregation Framework
 ---
