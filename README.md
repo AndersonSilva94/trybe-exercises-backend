@@ -44,7 +44,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### MongoDB: Aggregation Framework
 ---
 
-- [ ] Aggregation Framework - Parte 1
+- [x] Aggregation Framework - Parte 1
 - [ ] Aggregation Framework - Parte 2
 
 ### Introdução ao desenvolvimento Web com NodeJS
