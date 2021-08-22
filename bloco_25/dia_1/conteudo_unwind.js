@@ -1,0 +1,6 @@
+use("agg-trybe")
+/* db.inventory.insertOne({ _id: 7, item: "ABC1", sizes: ["S", "M", "L"] });*/
+
+db.inventory.aggregate([{ 
+  $unwind : "$sizes" 
+}]);
