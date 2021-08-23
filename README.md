@@ -45,7 +45,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ---
 
 - [x] Aggregation Framework - Parte 1
-- [ ] Aggregation Framework - Parte 2
+- [x] Aggregation Framework - Parte 2
 
 ### Introdução ao desenvolvimento Web com NodeJS
 ---
