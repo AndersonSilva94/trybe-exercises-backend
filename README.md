@@ -50,7 +50,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### Introdução ao desenvolvimento Web com NodeJS
 ---
 
-- [ ] Intro - NodeJS/ Node.js - Introdução
+- [x] Intro - NodeJS/ Node.js - Introdução
 - [ ] Node.js - Fluxo Assíncrono
 - [ ] Testes com NodeJS
 - [ ] Express: HTTP com Node.js

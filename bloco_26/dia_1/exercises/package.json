@@ -9,7 +9,8 @@
     "velocidade": "node velocidade.js",
     "sorteio": "node sorteio.js",
     "start": "node index.js",
-    "fatorial": "node fatorial.js"
+    "fatorial": "node fatorial.js",
+    "fibonnaci": "node fibonnaci.js"
   },
   "author": "Anderson Silva (Andy)",
   "license": "ISC",
