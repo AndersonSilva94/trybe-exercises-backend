@@ -1,0 +1,20 @@
+{
+  "name": "my-scripts",
+  "version": "1.0.0",
+  "description": "exercicios dia 1 - node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "imc": "node imc.js",
+    "velocidade": "node velocidade.js",
+    "sorteio": "node sorteio.js",
+    "start": "node index.js",
+    "fatorial": "node fatorial.js",
+    "fibonnaci": "node fibonnaci.js"
+  },
+  "author": "Anderson Silva (Andy)",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
