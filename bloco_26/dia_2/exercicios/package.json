@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "exercicio-um": "node exercicio1.js",
-    "exercicio-dois": "node exercicio2.js"
+    "exercicio-dois": "node exercicio2.js",
+    "exercicio-tres": "node exercicio3.js"
   },
   "author": "Anderson Silva (Andy)",
   "license": "ISC"
