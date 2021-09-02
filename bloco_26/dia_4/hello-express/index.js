@@ -22,8 +22,16 @@ app.get('/recipes', function (request, response) {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
     return 0;
-  })
+  });
   response.json(sortRecipes)
+});
+
+app.get('/recipes/:id', function (request, response) {
+  const { id } = request.params;
+  const recipe = recipes.find((elem) => elem.id === parseInt(id));
+
+  if (!recipe) return response.status(400).json({ message: 'Recipe not found!' });
+  response.json(recipe);
 });
 
 app.get('/drinks', function(request, response) {
@@ -33,6 +41,16 @@ app.get('/drinks', function(request, response) {
     return 0;
   })
   response.json(sortDrinks)
+})
+
+app.get('/drinks/:id', function(request, response) {
+  const { id } = request.params;
+
+  const drink = drinks.find((elem) => elem.id === parseInt(id));
+
+  if (!drink) return response.status(400).json({ message: 'Drink not found' });
+
+  return response.status(200).json(drink)
 })
 
 app.listen(3001, () => {
