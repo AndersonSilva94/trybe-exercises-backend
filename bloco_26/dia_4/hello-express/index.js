@@ -26,14 +26,6 @@ app.get('/recipes', function (request, response) {
   response.json(sortRecipes)
 });
 
-app.get('/recipes/:id', function (request, response) {
-  const { id } = request.params;
-  const recipe = recipes.find((elem) => elem.id === parseInt(id));
-
-  if (!recipe) return response.status(400).json({ message: 'Recipe not found!' });
-  response.json(recipe);
-});
-
 app.get('/drinks', function(request, response) {
   const sortDrinks = drinks.sort(function (a, b) {
     if (a.name > b.name) return 1;
@@ -41,17 +33,7 @@ app.get('/drinks', function(request, response) {
     return 0;
   })
   response.json(sortDrinks)
-})
-
-app.get('/drinks/:id', function(request, response) {
-  const { id } = request.params;
-
-  const drink = drinks.find((elem) => elem.id === parseInt(id));
-
-  if (!drink) return response.status(400).json({ message: 'Drink not found' });
-
-  return response.status(200).json(drink)
-})
+});
 
 app.listen(3001, () => {
   console.log('Aplicação ouvindo na porta 3001')
@@ -107,3 +89,35 @@ function helloWordRequest(req, res) {
     // Requisições para rota POST `/` são resolvidas aqui!
     response.send('hello word POST');
   }); */
+
+  // query string -> geralmente usado em funcionalidades de pesquisa, onde o usuário seleciona uma informação e através de filtros avançados, uma rota é criada.
+  app.get('/recipes/search', function(request, response) {
+    const { name, maxPrice, minPrice } = request.query;
+    const filteredRecipes = recipes.filter((elem) => elem.name.includes(name.toLowerCase()) 
+      && elem.price < parseInt(maxPrice) && elem.price > parseInt(minPrice));
+    response.status(200).json(filteredRecipes);
+  });
+
+  /* app.get('/recipes/:id', function (request, response) {
+  const { id } = request.params;
+  const recipe = recipes.find((elem) => elem.id === parseInt(id));
+
+  if (!recipe) return response.status(400).json({ message: 'Recipe not found!' });
+  response.json(recipe);
+}); */
+
+  app.get('/drinks/search', function(request, response) {
+    const { name } = request.query;
+    const filteredDrinks = drinks.filter((elem) => elem.name.includes(name));
+    response.status(200).json(filteredDrinks);
+  });
+
+app.get('/drinks/:id', function(request, response) {
+  const { id } = request.params;
+
+  const drink = drinks.find((elem) => elem.id === parseInt(id));
+
+  if (!drink) return response.status(400).json({ message: 'Drink not found' });
+
+  return response.status(200).json(drink)
+});
