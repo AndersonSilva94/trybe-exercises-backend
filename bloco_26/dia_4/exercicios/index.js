@@ -26,3 +26,10 @@ app.post('/greetings', function (request, response) {
   if (age <= 17) return response.status(401).json({ "message": "Unauthorized" });
   return response.status(200).json({ "message": `Hello, ${name}!` })
 })
+
+// exercício 4
+app.put('/users/:name/:age', function (request, response) {
+  const { name, age } = request.body;
+
+  return response.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de idade!` });
+})
