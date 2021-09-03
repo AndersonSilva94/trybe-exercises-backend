@@ -35,14 +35,21 @@ app
   response.status(201).json({ message: 'Recipe created successfully!' });
 })
 
-app.get('/drinks', function(request, response) {
+app
+.route('/drinks')
+.get(function(request, response) {
   const sortDrinks = drinks.sort(function (a, b) {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
     return 0;
   })
   response.json(sortDrinks)
-});
+})
+.post(function (request, response) {
+  const { id, name, price } = request.body;
+  drinks.push({ id, name, price });
+  response.status(201).json({ message: 'Drink created successfully!' });
+})
 
 app.listen(3001, () => {
   console.log('Aplicação ouvindo na porta 3001')
@@ -107,13 +114,36 @@ function helloWordRequest(req, res) {
     response.status(200).json(filteredRecipes);
   });
 
-  /* app.get('/recipes/:id', function (request, response) {
+app
+  .route('/recipes/:id')
+  .get(function (request, response) {
   const { id } = request.params;
   const recipe = recipes.find((elem) => elem.id === parseInt(id));
 
   if (!recipe) return response.status(400).json({ message: 'Recipe not found!' });
   response.json(recipe);
-}); */
+  })
+  .put(function (request, response) {
+    const { id } = request.params;
+    const { name, price, waitTime } = request.body;
+    const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
+
+    if (recipeIndex === -1) return response.status(404).json({ message: 'Recipe not found!' });
+
+    recipes[recipeIndex] = { ...recipes[recipeIndex], name, price, waitTime };
+
+    response.status(204).end();
+  })
+  .delete(function (request, response) {
+    const { id } = request.params;
+    const findRecipe = recipes.findIndex((elem) => elem.id === parseInt(id));
+    if (findRecipe === -1) return response.status(404).json({ message: 'Recipe not found!' });
+
+    recipes.splice(findRecipe, 1);
+    return response.status(204).end();
+  })
+
+
 
   app.get('/drinks/search', function(request, response) {
     const { name } = request.query;
@@ -121,12 +151,30 @@ function helloWordRequest(req, res) {
     response.status(200).json(filteredDrinks);
   });
 
-app.get('/drinks/:id', function(request, response) {
-  const { id } = request.params;
+app
+  .route('/drinks/:id')
+  .get(function(request, response) {
+    const { id } = request.params;
+    const drink = drinks.find((elem) => elem.id === parseInt(id));
 
-  const drink = drinks.find((elem) => elem.id === parseInt(id));
+    if (!drink) return response.status(400).json({ message: 'Drink not found' });
+    return response.status(200).json(drink)
+  })
+  .put(function (request, response) {
+    const { id } = request.params;
+    const { name, price, waitTime } = request.body;
+    const findDrink = drinks.findIndex((elem) => elem.id === parseInt(id));
 
-  if (!drink) return response.status(400).json({ message: 'Drink not found' });
+    if (findDrink === -1) return response.status(404).json({ message: 'Drink not found!' });
 
-  return response.status(200).json(drink)
-});
+    drinks[findDrink] = { ...drinks[findDrink], name, price, waitTime };
+    return response.status(200).json({ message: 'updated recipe'})
+  })
+  .delete(function (request, response) {
+    const { id } = request.params;
+    const findDrink = drinks.findIndex((elem) => elem.id === parseInt(id));
+
+    if(findDrink === -1) return response.status(404).json({ message: 'Drink not found!' });
+    drinks.splice(findDrink, 1);
+    return response.status(202).json({ message: 'Deleted recipe'});
+  })
