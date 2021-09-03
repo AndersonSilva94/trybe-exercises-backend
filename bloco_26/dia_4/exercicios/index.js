@@ -1,8 +1,11 @@
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
+// const simpsonsUtils = require('utils');
 
 const app = express();
 app.use(bodyParser.json());
+
 
 app.listen(3001, () => {
   console.log('Aplicação rodando na porta 3001')
@@ -32,4 +35,19 @@ app.put('/users/:name/:age', function (request, response) {
   const { name, age } = request.body;
 
   return response.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de idade!` });
-})
+});
+
+// exercício 5 e 6
+const allSimpsons = 'simpsons.json'
+const simpsons = JSON.parse(fs.readFileSync(allSimpsons, 'utf-8'));
+
+
+app.get('/simpsons', function (_request, response) {
+  return response.status(200).json(simpsons);
+});
+
+/* app.get('/simpsons', rescue(async (req, res) => {
+  const simpsons = await simpsonsUtils.getSimpsons();
+
+  res.status(200).json(simpsons);
+})) */
