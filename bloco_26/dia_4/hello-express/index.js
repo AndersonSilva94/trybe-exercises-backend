@@ -1,6 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express(); //1
+app.use(bodyParser.json());
 
 const recipes = [
   { id: 1, name: "lasanha", price: 40.0, waitTime: 30 },
@@ -17,14 +19,21 @@ const drinks = [
   { id: 6, name: 'Agua Mineral 500 ml', price: 5.0 },
 ];
 
-app.get('/recipes', function (request, response) {
+app
+.route('/recipes')
+.get(function (request, response) {
   const sortRecipes = recipes.sort(function (a, b ) {
     if (a.name > b.name) return 1;
     if (a.name < b.name) return -1;
     return 0;
   });
   response.json(sortRecipes)
-});
+})
+.post(function (request, response) {
+  const { id, name, price, waitTime } = request.body;
+  recipes.push({ id, name, price, waitTime });
+  response.status(201).json({ message: 'Recipe created successfully!' });
+})
 
 app.get('/drinks', function(request, response) {
   const sortDrinks = drinks.sort(function (a, b) {
