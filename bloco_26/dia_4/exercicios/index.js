@@ -41,9 +41,18 @@ app.put('/users/:name/:age', function (request, response) {
 const allSimpsons = 'simpsons.json'
 const simpsons = JSON.parse(fs.readFileSync(allSimpsons, 'utf-8'));
 
-
 app.get('/simpsons', function (_request, response) {
   return response.status(200).json(simpsons);
+});
+
+// exercício 7
+app.get('/simpsons/:id', function (request, response) {
+  const { id } = request.params;
+
+  const findSimpson = simpsons.find((elem) => elem.id === id);
+  if (!findSimpson) return response.status(404).json({ message: 'simpson not found' })
+
+  return response.status(200).json(findSimpson);
 });
 
 /* app.get('/simpsons', rescue(async (req, res) => {
