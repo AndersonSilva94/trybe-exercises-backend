@@ -37,13 +37,23 @@ app.put('/users/:name/:age', function (request, response) {
   return response.status(200).json({ message: `Seu nome é ${name} e você tem ${age} anos de idade!` });
 });
 
-// exercício 5 e 6
+// exercício 5, 6 e 8
 const allSimpsons = 'simpsons.json'
 const simpsons = JSON.parse(fs.readFileSync(allSimpsons, 'utf-8'));
 
-app.get('/simpsons', function (_request, response) {
+app
+.route('/simpsons')
+.get(function (_request, response) {
   return response.status(200).json(simpsons);
-});
+})
+.post(function (request, response) {
+  const { id, name } = request.body;
+  const findSimpson = simpsons.find((elem) => parseInt(elem.id) === id);
+  if(findSimpson) return response.status(409).json({ message: 'id already exists' });
+
+  simpsons.push({ id, name });
+  return response.status(204).end();
+})
 
 // exercício 7
 app.get('/simpsons/:id', function (request, response) {
@@ -54,6 +64,8 @@ app.get('/simpsons/:id', function (request, response) {
 
   return response.status(200).json(findSimpson);
 });
+
+//
 
 /* app.get('/simpsons', rescue(async (req, res) => {
   const simpsons = await simpsonsUtils.getSimpsons();
