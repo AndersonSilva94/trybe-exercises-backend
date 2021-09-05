@@ -51,9 +51,9 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ---
 
 - [x] Intro - NodeJS/ Node.js - Introdução
-- [ ] Node.js - Fluxo Assíncrono
-- [ ] Testes com NodeJS
-- [ ] Express: HTTP com Node.js
+- [x] Node.js - Fluxo Assíncrono
+- [x] Testes com NodeJS
+- [x] Express: HTTP com Node.js
 - [ ] Praticando Express
 
 ### NodeJS: Camada de Serviço e Arquitetura Rest e Restful
