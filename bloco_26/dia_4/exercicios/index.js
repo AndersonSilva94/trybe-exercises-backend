@@ -1,7 +1,6 @@
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
-// const simpsonsUtils = require('utils');
 
 const app = express();
 app.use(bodyParser.json());
@@ -51,7 +50,7 @@ app
   const findSimpson = simpsons.find((elem) => parseInt(elem.id) === id);
   if(findSimpson) return response.status(409).json({ message: 'id already exists' });
 
-  simpsons.push({ id, name });
+  simpsons.push({ id: id.toString(), name });
   return response.status(204).end();
 })
 
@@ -66,9 +65,3 @@ app.get('/simpsons/:id', function (request, response) {
 });
 
 //
-
-/* app.get('/simpsons', rescue(async (req, res) => {
-  const simpsons = await simpsonsUtils.getSimpsons();
-
-  res.status(200).json(simpsons);
-})) */
