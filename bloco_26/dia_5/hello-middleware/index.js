@@ -33,12 +33,13 @@ app.get('/recipes', (_request, response) => {
 
 app.post('/recipes', validatePrice, (request, response) => {
   const { id, name, price } = request.body;
+  const { username } = request.user; // Aqui estamos acessando o usuário encontrado no middleware de autenticação.
 
   const findRecipe = recipes.find((elem) => elem.id === id)
 
   if(findRecipe) return response.status(400).json({ message: 'Id already exists!' });
 
-  recipes.push({ id, name, price });
+  recipes.push({ id, name, price, chef: username });
   return response.status(200).json({ message: 'Recipe created successfully!'})
 })
 
