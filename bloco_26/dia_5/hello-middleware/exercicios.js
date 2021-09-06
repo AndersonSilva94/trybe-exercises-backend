@@ -5,13 +5,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // exercício 1
-const authMiddleware = require('./auth-exercicios');
-
-app.use(authMiddleware);
-
-app.post('/user/register', function (_request, response) {
-  return response.status(201).json({ message: 'user created' });
-})
+const routerUser = require('./router-exercicios');
+app.use('/user', routerUser);
 
 app.listen(3001, () => {
   console.log('Ouvindo na porta 3001');

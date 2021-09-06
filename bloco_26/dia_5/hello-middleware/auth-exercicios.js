@@ -1,24 +1,37 @@
 // exercício 1
-const authMiddleware = (request, response, next) => {
-  const { username, email, password } = request.headers;
+const verifyUser = (request, response, next) => {
+  const { username } = request.body;
 
-  if(!username && !email && !password)
-    return response.status(400).json({  message: "invalid data"  });
+  if(!username || username.length < 3)
+    return response.status(400).json({  message: "invalid user"  });
 
+    next();
+}
+
+const verifyEmail = (request, response, next) => {
+  const { email } = request.body;
   const emailRegex = /^\w+@\w+.com$/;
-  const verifyEmail = emailRegex.test(email);
+  const testEmail = emailRegex.test(email);
 
-  const verifyPass = (pass) => {
-    const passwordRegex = /^[0-9]+$/;
-    const verifyPassword = passwordRegex.test(pass)
-    if (pass.length < 4 || pass.length > 8 || !verifyPassword) return false;
-    return true;
-  }
-
-  if(!verifyEmail || username.length < 3 || !verifyPass(password))
-    return response.status(400).json({  message: "invalid data"  });
+  if(!testEmail)
+    return response.status(400).json({  message: "invalid email"  });
 
   next();
 }
 
-module.exports = authMiddleware;
+const verifyPassword = (request, response, next) => {
+  const { password } = request.body;
+  const passwordRegex = /^[0-9]+$/;
+  const testPassword = passwordRegex.test(password);
+
+  if (password.length < 4 || password.length > 8 || !testPassword)
+    return response.status(400).json({  message: "invalid password"  });
+
+  next();
+}
+  
+module.exports = {
+  verifyUser,
+  verifyEmail,
+  verifyPassword
+};
