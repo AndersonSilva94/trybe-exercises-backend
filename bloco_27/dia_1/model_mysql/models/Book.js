@@ -25,7 +25,21 @@ const getByAuthorId = async (authorId) => {
   return books.map(serialize);
 }
 
+const getById = async (idBook) => {
+  const [book] = await connection.execute(
+    'SELECT id, title, author_id FROM books WHERE id = ?',
+    [idBook]
+  );
+
+  if(book.length === 0) return null;
+
+  const { id, title, authorId } = serialize(book[0]);
+
+  return { id, title, authorId };
+}
+
 module.exports = {
   getAll,
-  getByAuthorId
+  getByAuthorId,
+  getById
 }
