@@ -21,4 +21,24 @@ VALUES ('George','R. R.','Martin','1948-09-20','norte-americano'),
     ('Frank',NULL,'Herbert','1920-02-11','norte-americano'),
     ('Júlio',NULL,'Verne','1905-03-24','francês');
 
-SELECT * FROM authors
+SELECT * FROM authors;
+
+CREATE TABLE books (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(90) NOT NULL,
+    author_id INT(11) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (author_id) REFERENCES authors (id)
+);
+
+INSERT INTO books (title, author_id)
+VALUES
+    ('A Game of Thrones', 1),
+    ('A Clash of Kings', 1),
+    ('A Storm of Swords', 1),
+    ('The Lord of The Rings - The Fellowship of the Ring', 2),
+    ('The Lord of The Rings - The Two Towers', 2),
+    ('The Lord of The Rings - The Return of The King', 2),
+    ('Foundation', 3);
+
+SELECT * FROM books;
