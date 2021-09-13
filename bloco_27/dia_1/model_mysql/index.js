@@ -28,19 +28,19 @@ app.post('/authors', async (req, res) => {
   const { first_name, middle_name, last_name } = req.body;
 
   if (!Author.isValid(first_name, middle_name, last_name)) {
-      return res.status(400).json({ message: 'Dados inválidos' });
+    return res.status(400).json({ message: 'Dados inválidos' });
   }
 
   await Author.create(first_name, middle_name, last_name);
 
-  res.status(201).json({ message: 'Autor criado com sucesso! '});
+  res.status(201).json({ message: 'Autor criado com sucesso! ' });
 });
 
 app.get('/books/search', async function (request, response) {
   const { id } = request.query;
   const books = await Book.getByAuthorId(id);
 
-  if(!books) {
+  if (!books) {
     return response.status(404).json({ message: 'Not found!' });
   }
 
@@ -57,7 +57,7 @@ app.get('/books/:id', async function (request, response) {
   const { id } = request.params;
   const book = await Book.getById(id);
 
-  if(!book) return response.status(404).json({ message: 'Not found' });
+  if (!book) return response.status(404).json({ message: 'Not found' });
 
   return response.status(200).json(book);
 });
@@ -65,7 +65,7 @@ app.get('/books/:id', async function (request, response) {
 app.post('/books', async function (request, response) {
   const { title, author_id } = request.body;
 
-  if(!await Book.isValidBook(title, author_id)) {
+  if (!await Book.isValidBook(title, author_id)) {
     return response.status(400).json({ message: 'Dados inválidos' });
   }
 
@@ -77,3 +77,4 @@ app.post('/books', async function (request, response) {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 })
+// teste github
