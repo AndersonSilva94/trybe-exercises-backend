@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 const Author = require('./models/Author');
-// const Book = require('./models/Book');
+const Book = require('./models/Book');
 
 app.use(bodyParser.json());
 
@@ -45,7 +45,7 @@ app.post('/authors', async (req, res) => {
   }
 
   return response.status(200).json(books);
-})
+}) */
 
 app.get('/books', async function (request, response) {
   const books = await Book.getAll();
@@ -53,7 +53,7 @@ app.get('/books', async function (request, response) {
   return response.status(200).json(books);
 })
 
-app.get('/books/:id', async function (request, response) {
+/* app.get('/books/:id', async function (request, response) {
   const { id } = request.params;
   const book = await Book.getById(id);
 
