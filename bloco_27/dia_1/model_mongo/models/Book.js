@@ -46,8 +46,25 @@ const getById = async (id) => {
   }
 }
 
+const isValidBook = async (title, authorId) => {
+  if (!title || title.length < 3) return false;
+  if (!authorId || !(await Author.findById(authorId))) return false;
+
+  return true;
+}
+
+const createBook = async (title, authorId) => {
+  await connection()
+    .then((db) => db.collection('books').insertOne({
+      title,
+      author_id: authorId
+    }))
+}
+
 module.exports = {
   getAll,
   getByAuthorId,
-  getById
+  getById,
+  isValidBook,
+  createBook
 }

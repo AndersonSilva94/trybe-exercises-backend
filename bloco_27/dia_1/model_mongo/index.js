@@ -62,7 +62,7 @@ app.get('/books/:id', async function (request, response) {
   return response.status(200).json(book);
 });
 
-/* app.post('/books', async function (request, response) {
+app.post('/books', async function (request, response) {
   const { title, author_id } = request.body;
 
   if (!await Book.isValidBook(title, author_id)) {
@@ -72,7 +72,7 @@ app.get('/books/:id', async function (request, response) {
   await Book.createBook(title, author_id);
 
   return response.status(201).json({ message: 'Livro criado com sucesso!' });
-}) */
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
