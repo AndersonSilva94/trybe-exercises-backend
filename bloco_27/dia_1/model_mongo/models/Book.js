@@ -32,9 +32,22 @@ const getByAuthorId = async (authorId) => {
   return responseBooks;
 };
 
+const getById = async (id) => {
+  const bookData = await connection().then((db) => db.collection('books').findOne(ObjectId(id)))
 
+  if (!bookData) return null;
+
+  const { title, author_id } = bookData;
+
+  return {
+    id,
+    title,
+    authorId: author_id
+  }
+}
 
 module.exports = {
   getAll,
-  getByAuthorId
+  getByAuthorId,
+  getById
 }

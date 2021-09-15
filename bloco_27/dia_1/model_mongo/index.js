@@ -53,7 +53,7 @@ app.get('/books', async function (request, response) {
   return response.status(200).json(books);
 })
 
-/* app.get('/books/:id', async function (request, response) {
+app.get('/books/:id', async function (request, response) {
   const { id } = request.params;
   const book = await Book.getById(id);
 
@@ -62,7 +62,7 @@ app.get('/books', async function (request, response) {
   return response.status(200).json(book);
 });
 
-app.post('/books', async function (request, response) {
+/* app.post('/books', async function (request, response) {
   const { title, author_id } = request.body;
 
   if (!await Book.isValidBook(title, author_id)) {
