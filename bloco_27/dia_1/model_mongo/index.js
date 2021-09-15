@@ -36,16 +36,16 @@ app.post('/authors', async (req, res) => {
   res.status(201).json({ message: 'Autor criado com sucesso! ' });
 });
 
-/* app.get('/books/search', async function (request, response) {
+app.get('/books/search', async function (request, response) {
   const { id } = request.query;
   const books = await Book.getByAuthorId(id);
-
+  // console.log(books)
   if (!books) {
     return response.status(404).json({ message: 'Not found!' });
   }
 
   return response.status(200).json(books);
-}) */
+})
 
 app.get('/books', async function (request, response) {
   const books = await Book.getAll();
