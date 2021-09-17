@@ -78,6 +78,20 @@ const findById = async (id) => {
   const { firstName, lastName, email } = userData;
 
   return { id, firstName, lastName, email };
+};
+
+const updateUser = async (id, { firstName, lastName, email, password }) => {
+  const updated = await connection()
+    .then((db) => {
+      const user = new ObjectId(id);
+      const newValues = { firstName, lastName, email, password };
+      return db.collection('users').findOneAndUpdate({ _id: user }, { $set: newValues }, { returnOriginal: false })
+        .then((result) => ({ id: result._id, firstName, lastName, email }));
+    })
+
+  if (!updated) return null;
+
+  return updated;
 }
 
 module.exports = {
@@ -86,5 +100,6 @@ module.exports = {
   isValidPassword,
   createUser,
   getAll,
-  findById
+  findById,
+  updateUser
 }
