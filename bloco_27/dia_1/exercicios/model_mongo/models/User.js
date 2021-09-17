@@ -69,10 +69,22 @@ const getAll = async () => {
     });
 };
 
+const findById = async (id) => {
+  const userData = await connection()
+    .then((db) => db.collection('users').findOne(ObjectId(id)));
+
+  if (!userData) return null;
+
+  const { firstName, lastName, email } = userData;
+
+  return { id, firstName, lastName, email };
+}
+
 module.exports = {
   isValidUsername,
   isValidEmail,
   isValidPassword,
   createUser,
-  getAll
+  getAll,
+  findById
 }
