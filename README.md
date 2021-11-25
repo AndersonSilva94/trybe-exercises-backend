@@ -80,7 +80,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 ### Arquitetura: SOLID e ORM
 ---
 
-- [ ] Arquitetura - Princípios SOLID
+- [x] Arquitetura - Princípios SOLID
 - [ ] ORM - Interface da aplicação com o banco de dados
 - [ ] ORM - Associations
 
