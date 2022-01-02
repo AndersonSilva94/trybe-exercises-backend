@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests/**/*$NAME*.test.js --exit",
     "dev": "nodemon index.js"
   },
   "keywords": [],
@@ -19,6 +19,11 @@
     "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.3",
+    "nodemon": "^2.0.15",
+    "sequelize-test-helpers": "^1.4.2",
+    "sinon": "^12.0.1"
   }
 }
