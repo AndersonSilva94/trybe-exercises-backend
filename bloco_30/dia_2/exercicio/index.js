@@ -2,7 +2,7 @@ const express = require('express');
 const { Book } = require('./models');
 const bodyParser = require('body-parser');
 
-// const bookController = require('./controllers/bookController');
+const bookController = require('./controllers/bookController');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +18,8 @@ app.get('/books', async (req, res) => {
     res.status(500).json({ message: 'Algo deu errado ' })
   };
 });
+
+app.use('/book', bookController);
 
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}`));
 
