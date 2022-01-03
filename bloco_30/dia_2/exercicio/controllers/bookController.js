@@ -2,6 +2,20 @@ const express = require('express');
 const { Book } = require('../models');
 const router = express.Router();
 
+router.get('/search', async (req, res) => {
+  try {
+    const { author } = req.query;
+    const book = await Book.findAll({ where: { author } });
+
+    if (!book) return res.status(404).json({ message: 'Autor não encontrado' });
+
+    return res.status(200).json(book);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const { title, author, pageQuantity } = req.body;
@@ -58,6 +72,6 @@ router.delete('/:id', async (req, res) => {
     console.log(err.message);
     res.status(500).json({ message: 'Algo deu errado' });
   }
-})
+});
 
 module.exports = router;
