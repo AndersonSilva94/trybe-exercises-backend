@@ -46,6 +46,18 @@ router.post('/:id', async (req, res) => {
     console.log(err.message);
     res.status(500).json({ message: 'Algo deu errado' });
   }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteBook = await Book.destroy({ where: { id } });
+
+    return res.status(200).json({ message: 'Livro excluído com sucesso!' });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  }
 })
 
 module.exports = router;
