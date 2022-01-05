@@ -10,7 +10,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const sequelize = new Sequelize(config.development);
+const sequelize = new Sequelize(
+  process.env.NODE_ENV === 'test' ? config.test : config.development
+);
 
 app.get('/employees', async (_req, res) => {
   try {
@@ -70,7 +72,10 @@ app.post('/employees', async (req, res) => {
 
     await t.commit();
 
-    return res.status(201).json({ message: 'Cadastrado com sucesso' });
+    return res.status(201).json({
+      id: employee.id,
+      message: 'Cadastrado com sucesso'
+    });
   } catch (e) {
     await t.rollback();
     console.log(e.message);
