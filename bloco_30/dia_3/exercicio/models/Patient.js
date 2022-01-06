@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     fullname: DataTypes.STRING,
+    /* plan_id: {
+      type: DataTypes.INTEGER,
+      foreignKey: true,
+    } */
   },
     {
       timestamps: false,
@@ -13,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   Patient.associate = (models) => {
-    Patient.hasOne(models.Plan, {
-      as: 'plans', foreignKey: 'patientId'
+    Patient.belongsTo(models.Plan, {
+      foreignKey: 'plan_id', as: 'plans'
     });
   };
 

@@ -1,10 +1,13 @@
 const bodyParser = require('body-parser');
-
 const express = require('express');
+
+const controller = require('./controllers');
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/patients', controller.patientsController);
 
 const PORT = 3000;
 

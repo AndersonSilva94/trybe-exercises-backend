@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   Plan.associate = (models) => {
-    Plan.belongsToMany(models.Patient, { as: 'patients', foreignKey: 'patientId' })
+    Plan.hasOne(models.Patient, { foreignKey: 'plan_id', as: 'patients' })
   }
 
   return Plan;
