@@ -46,4 +46,17 @@ router.post('/', async (req, res) => {
   };
 });
 
+router.get('/surgeriesWithoutDoctor', async (_req, res) => {
+  try {
+    const patients = await Patient.findAll({
+      include: [{ model: Surgery, as: 'surgeries', through: { attributes: [] }, attributes: { exclude: ['doctor'] } }],
+    });
+
+    return res.status(200).json(patients);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  };
+});
+
 module.exports = router;
