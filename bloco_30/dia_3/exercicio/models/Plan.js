@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: false,
       tableName: 'Plans',
-      underscored: true,
+      underscored: true, // é pra deixar em snake case.
     });
 
   Plan.associate = (models) => {
-    Plan.hasOne(models.Patient, { foreignKey: 'plan_id', as: 'patients' })
+    Plan.hasMany(models.Patient, { foreignKey: 'plan_id', as: 'patients' }) // 
   }
 
   return Plan;

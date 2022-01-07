@@ -8,6 +8,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/patients', controller.patientsController);
+app.use('/plans', controller.plansController);
 
 const PORT = 3000;
 
