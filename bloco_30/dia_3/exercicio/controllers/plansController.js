@@ -2,9 +2,11 @@ const express = require('express');
 const { Patient, Plan } = require('../models');
 const router = express.Router();
 
-router.get('/patients', async (_req, res) => {
+router.get('/:id', async (req, res) => {
   try {
+    const { id } = req.params;
     const plans = await Plan.findAll({
+      where: { plan_id: id },
       include: [{
         model: Patient, as: 'patients', attributes: {
           exclude: ['plan_id']
