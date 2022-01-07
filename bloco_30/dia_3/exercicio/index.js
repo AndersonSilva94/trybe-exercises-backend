@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/patients', controller.patientsController);
 app.use('/plans', controller.plansController);
+app.use('/surgeries', controller.surgeriesController);
 
 const PORT = 3000;
 
