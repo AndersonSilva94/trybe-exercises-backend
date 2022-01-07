@@ -82,7 +82,7 @@ No presente repositório constam todos os exercícios referentes aos blocos de c
 
 - [x] Arquitetura - Princípios SOLID
 - [x] ORM - Interface da aplicação com o banco de dados
-- [ ] ORM - Associations
+- [x] ORM - Associations
 
 ### Sockets
 ---
