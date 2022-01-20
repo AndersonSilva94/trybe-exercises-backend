@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MVC - Example 2</title>
+</head>
+
+<body>
+
+  <ul>
+    <% authors.forEach((author)=> { %>
+      <!-- aqui dentro coloco o código js -->
+      <li>
+        <%= author.name %>
+      </li>
+      <% }) %>
+  </ul>
+  <a href="/authors/new">Criar novo autor</a>
+</body>
+
+</html>
